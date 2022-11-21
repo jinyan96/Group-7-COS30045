@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Metadata -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="Lee Jin Yan">
+  <!-- Document Title -->
+  <title>HydroPower Energy</title>
+  <!-- D3 -->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <!-- Styling -->
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#story">Story</a></li>
+            <li><a href="#hydro-type">Calculate the type of powerplant by Country</a></li>
+            <li><a href="#hydro-capacity">Installed Capacity/Pumping Capacity by Country</a></li>
+            <li><a href="#hydro-global">Electricity generation per capita by Country</a></li>
+            <li><a href="#hydro-pie">Type of HydroPower plant </a></li>
+    </nav>
+
+    <section id="main">
+        <section class="chart-card">
+            <h1>Information of Hydropower-Plant in Europe Country </h1>
+        </section>
+
+        <!--Story Page-->
+        <section id="story" class="chart-card">
+            <article>
+                <h1>StoryBoard</h1>
+                <p class="quote">
+                    Humans have been harnessing the energy of river currents for centuries, using water wheels spun by rivers initially to process grains and cloth. Today, hydropower provides about 16 percent of the world's electricity, generating power in all but two U.S. states.
+                    Hydropower became an electricity source in the late 19th century, a few decades after British-American engineer James Francis developed the first modern water turbine. In 1882, the world’s first hydroelectric power plant began operating in the United States along the Fox River in Appleton, Wisconsin.
+                    China, Brazil, Canada, the United States, and Russia are the five largest producers of hydropower. The world's largest hydroelectric plant in terms of installed capacity is Three Gorges (Sanxia) on China's Yangtze River, which is 1.4 miles (2.3 kilometers) wide and 607 feet (185 meters) high. The facility that actually generates the most electricity annually is the Itaipu plant situated on the ‎Paraná River between Brazil and Paraguay.</p>
+                <p>
+                    <b>How hydropower works</b><br>
+                    A typical hydroelectric plant is a system with three parts: a power plant where the electricity is produced, a dam that can be opened or closed to control water flow, and a reservoir where water is stored. The water behind the dam flows through an intake and pushes against blades in a turbine, causing them to turn. The turbine spins a generator to produce electricity.The amount of electricity that can be generated depends on how far the water drops and how much water moves through the system. The electricity can be transported through long-distance electric lines to homes, factories, and businesses. Other types of hydropower plants make use of the flow through a waterway without a dam. </a>How hydropower worksA typical hydroelectric plant is a system with three parts: a power plant where the electricity is produced, a dam that can be opened or closed to control water flow, and a reservoir where water is stored. The water behind the dam flows through an intake and pushes against blades in a turbine, causing them to turn. The turbine spins a generator to produce electricity.The amount of electricity that can be generated depends on how far the water drops and how much water moves through the system. The electricity can be transported through long-distance electric lines to homes, factories, and businesses. Other types of hydropower plants make use of the flow through a waterway without a dam. 
+                </p>
+            </article>
+        </section>
+
+
+        <!--Bar Chart Page-->
+        <section id="hydro-type" class="chart-card">
+          <br><br>
+          <h1>Country count of Type of Hydro-powerplant</h1>
+          <div class="border rounded my-3 p-3" >
+                    <span>
+                    For this visualisation we investigate each type of Hydropower plant in each country.Here we wanted to see both the breakdown of types of waste, and the change of the output over time. By using the JRC Hydro-power database from the Data Europa EU Website as the data source for this visual, we were able to visualise accurate data.<br><br>
+                    We have the Country Code on the X axis, and Number of Plant on the Y axis.<br><br>
+
+                    The two dropdowns can be used to interact with the data and view different years and/or waste types in depth.
+                    There is two radio button to allow user to interact with the data and see the transition between grouped and stacked bar chart.
+                    We have apply the tooltips which help the user to see the Country code, type of power plants, count and total.
+                    </span>
+                </div>
+            <form>
+                <label><input type="radio" name="mode" value="grouped"> Grouped</label>
+                <label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
+            </form>
+
+            <div id="barchart"></div>
+        </section>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <!--Line Chart-->
+        <section id="hydro-capacity" class="chart-card">
+            <h1>Installed Capacity/Pumping Capacity by Country</h1>
+            <div class="border rounded my-3 p-3">
+            <span>For this line chart display installed capacity and pumping capacity generated in Europe country. As for the purpose is to find out how much is Kilowatt-hour(kWh) for each of the country in Europe.<br><br>
+            We have the Country Code on the X axis, and installed capacity/pumping capacity on the Y axis.<br><br>
+            There is a drop down button to let user switch between the pumping capacity and pumping_capacity. Besides that, user can click the points to appear the tooltip in order to find th exact value. At the left hand side, user could notice the color of the legend for different capacity</span>
+            </div>
+            <select id="selectButton"></select>
+            <div id="my_dataviz"></div>
+        </section>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <!--Choropleth-->
+        <section id="hydro-global" class="chart-card">
+            <h1>Electricity generation from HydroPower Emissions per capita By Europe Country</h1>
+                <div class="border rounded my-3 p-3">
+                <span>In this visualisation is a choropleth, it is use to seeks to explore the annual hydropowr emmission. <br><br> The slide below allow you to choose the year. There is also tooltip hover when user click the country, it will appear the annual hydropower emission, country and the year from the dataset. There is also a legend below which will change based on the year.</span></div>
+                <p id="primaryChart"></p>
+
+                <!-- Timeline -->
+                <section id="timeline" class="row align-items-center height-cap">
+                    <button onclick="timelineButtonUpdate()" id="plause" class="col-auto p-0 px-2 m-0"><i class="bi bi-play-fill"></i></button>
+                    <p class="col-auto py-0 px-2 m-0 leftBorder">1965</p>
+                    <input oninput="timelineUpdate()" onchange="primaryChartUpdate()" type="range" name="year" id="year" class="col p-0 m-0" min="1965" max="2021" value="1965">
+                    <p class="col-auto py-0 px-2 m-0 rightBorder">2021</p>
+                    <p id="yearLabel" class="col-auto py-0 px-3 m-0">1965</p>
+                </section>
+        </section>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <!--Pie Chart-->
+        <section id="hydro-pie" class="chart-card">
+            <h1>Installed Capacity/Pumping Capacity by Country</h1>
+            <div class="border rounded my-3 p-3">
+                <span>The purpose of this chart is to visulize Europe overall type of hydro power plant exist so that user could understand better which hydropower plant is suitable. Below there is a radio button for user to switch between the type of powerplant. There is also tooltip and legend for user to interact with the visualisation.</span></div>
+            <form2></form2>
+            <div id="piechart"></div>
+        </section>
+
+
+    </section>
+</body>
+
+
+  <!-- Scripts -->
+  <script src="scripts/data_viz.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+  <script src="scripts/updates.js"></script>
+  <script src="scripts/choropleth.js"></script>
+</html>
