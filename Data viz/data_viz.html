@@ -20,11 +20,13 @@
     <nav>
         <ul>
             <li><a href="#story">Story</a></li>
+            <li><a href="#reference">Reference</a></li>
             <li><a href="#hydro-type">Calculate the type of powerplant by Country</a></li>
             <li><a href="#hydro-capacity">Installed Capacity/Pumping Capacity by Country</a></li>
             <li><a href="#hydro-global">Electricity generation per capita by Country</a></li>
             <li><a href="#hydro-pie">Europe count between the type of powerplant </a></li>
     </nav>
+
 
     <section id="main">
         <section class="chart-card">
@@ -40,12 +42,66 @@
                     Hydropower became an electricity source in the late 19th century, a few decades after British-American engineer James Francis developed the first modern water turbine. In 1882, the world’s first hydroelectric power plant began operating in the United States along the Fox River in Appleton, Wisconsin.
                     China, Brazil, Canada, the United States, and Russia are the five largest producers of hydropower. The world's largest hydroelectric plant in terms of installed capacity is Three Gorges (Sanxia) on China's Yangtze River, which is 1.4 miles (2.3 kilometers) wide and 607 feet (185 meters) high. The facility that actually generates the most electricity annually is the Itaipu plant situated on the ‎Paraná River between Brazil and Paraguay.</p>
                 <p>
-                    <b>How hydropower works</b><br>
+                    <b>How hydropower works</b><br><br>
                     A typical hydroelectric plant is a system with three parts: a power plant where the electricity is produced, a dam that can be opened or closed to control water flow, and a reservoir where water is stored. The water behind the dam flows through an intake and pushes against blades in a turbine, causing them to turn. The turbine spins a generator to produce electricity.The amount of electricity that can be generated depends on how far the water drops and how much water moves through the system. The electricity can be transported through long-distance electric lines to homes, factories, and businesses. Other types of hydropower plants make use of the flow through a waterway without a dam. </a>How hydropower worksA typical hydroelectric plant is a system with three parts: a power plant where the electricity is produced, a dam that can be opened or closed to control water flow, and a reservoir where water is stored. The water behind the dam flows through an intake and pushes against blades in a turbine, causing them to turn. The turbine spins a generator to produce electricity.The amount of electricity that can be generated depends on how far the water drops and how much water moves through the system. The electricity can be transported through long-distance electric lines to homes, factories, and businesses. Other types of hydropower plants make use of the flow through a waterway without a dam. 
                 </p>
             </article>
         </section>
+        <br><br><br><br><br><br><br>
 
+        <section id="reference" class="chart-card">
+            <h1>Reference</h1>
+        <article><p><b>Type of HydroPower Plant (Hover over to the image):</b></p></article>
+            <div class="row">
+                <div class="column">
+                    <img src="./styles/img/HROR.jpeg" alt="HROR" class="image" >
+                    <div class="overlay">HROR - Run out of River</div>
+                </div>
+                <div class="column">
+                    <img src="./styles/img/HPHS.jpg" alt="HPHS" class="image" >
+                    <div class="overlay">HPHS - Pumped Storage Hydropower</div>
+                </div>
+                <div class="column">
+                    <img src="./styles/img/HDAM.jpg" alt="HDAM" class="image"  >
+                    <div class="overlay">HDAM - Dam</div>
+                </div>
+            </div>
+        <div class="border rounded my-3 p-3" >
+            <div class="border rounded my-3 p-3" >
+            <p align="center">Country Code:</p>
+            </div>
+            <span align="center">
+            <br>CH – Switzerland
+            <br>IT – Italy
+            <br>FR – France
+            <br>SK – Slovakia
+            <br>DE – Germany
+            <br>ES – Spain
+            <br>AT – Austria
+            <br>SI – Slovenia
+            <br>SE – Sweden
+            <br>UK – United Kingdom
+            <br>FI – Finland
+            <br>EL – Greece
+            <br>RO – Romania
+            <br>AL – Albania
+            <br>BG – Bulgaria
+            <br>HR – Croatia
+            <br>PT – Portugal
+            <br>MK – North Macedonia
+            <br>RS – Serbia
+            <br>CZ – Czechia
+            <br>ME – Montenegro
+            <br>BA – Bosnia and Herzegovina
+            <br>HU – Hungary
+            <br>IE – Ireland
+            <br>PL – Poland
+            <br>BE – Belgium
+            <br>LV – Latvia
+            <br>LT – Lithuania
+            <br>XK – Kosovo
+            <br>NO – Norway</span>
+        </div>
 
         <!--Bar Chart Page-->
         <section id="hydro-type" class="chart-card">
@@ -76,7 +132,7 @@
             <div class="border rounded my-3 p-3">
             <span>For this line chart display installed capacity and pumping capacity generated in Europe country. As for the purpose is to find out how much is Kilowatt-hour(kWh) for each of the country in Europe.<br><br>
             We have the Country Code on the X axis, and installed capacity/pumping capacity on the Y axis.<br><br>
-            There is a drop down button to let user switch between the installed capacity and pumping capacity. Besides that, user can click the points to appear the tooltip in order to find th exact value. At the left hand side, user could notice the color of the legend for different capacity</span>
+            There is a drop down button to let user switch between the pumping capacity and pumping_capacity. Besides that, user can click the points to appear the tooltip in order to find th exact value. At the left hand side, user could notice the color of the legend for different capacity</span>
             </div>
             <select id="selectButton"></select>
             <div id="my_dataviz"></div>
