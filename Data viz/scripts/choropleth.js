@@ -19,10 +19,10 @@ function drawChoropleth(initialYear) {
   d3.csv("./datasets/hydro-electricity-per-capita.csv",function(data) {
     // Generate Hue Scheme Based On Data
     let color = d3.scaleLinear()
-        .domain([d3.min(data, (d) => { if (d.year == initialYear && d.code != "" && d.code != "ERP") return parseFloat(d.renewables); }),  d3.max(data, (d) => { if (d.year == initialYear && d.code != "" && d.code != "ERP") return parseFloat(d.renewables/4); }),  d3.max(data, (d) => { if (d.year == initialYear && d.code != "" && d.code != "ERP") return parseFloat(d.renewables/3); }),  d3.max(data, (d) => { if (d.year == initialYear && d.code != "" && d.code != "ERP") return parseFloat(d.renewables/2); }), d3.max(data, (d) => { if (d.year == initialYear && d.code != "" && d.code != "OWID_WRL") return parseFloat(d.renewables); })])
+        .domain([d3.min(data, (d) => { if (d.year == initialYear && d.code != "" && d.code != "ERP") return parseFloat(d.hydropowergeneration); }),  d3.max(data, (d) => { if (d.year == initialYear && d.code != "" && d.code != "ERP") return parseFloat(d.hydropowergeneration/4); }),  d3.max(data, (d) => { if (d.year == initialYear && d.code != "" && d.code != "ERP") return parseFloat(d.hydropowergeneration/3); }),  d3.max(data, (d) => { if (d.year == initialYear && d.code != "" && d.code != "ERP") return parseFloat(d.hydropowergeneration/2); }), d3.max(data, (d) => { if (d.year == initialYear && d.code != "" && d.code != "OWID_WRL") return parseFloat(d.hydropowergeneration); })])
     .range([ "#eff3ff","#bdd7e7","#6baed6","#3182bd","#08519c"]);
 
-    let globalChangeValue = 0; // Europe Aggregate Change
+    let europeChangeValue = 0; // Europe Aggregate Change
 
     // Bind Data From CSV To GeoJSON Properties
     d3.json("https://raw.githubusercontent.com/leakyMirror/map-of-europe/master/GeoJSON/europe.geojson",function(err,json) {
@@ -30,8 +30,8 @@ function drawChoropleth(initialYear) {
         if (datum.year == initialYear)
           for (let i = 0; i < json.features.length; i++) {
             let properties = json.features[i].properties;
-            if (properties.NAME == datum.entity) { properties.value = datum.renewables; break; }
-            else if (datum.entity == "Europe") { globalChangeValue = datum.renewables; break; }
+            if (properties.NAME == datum.entity) { properties.value = datum.hydropowergeneration; break; }
+            else if (datum.entity == "Europe") { europeChangeValue = datum.hydropowergeneration; break; }
           }
       });
 
@@ -82,7 +82,9 @@ function click(d) {
 }
 
 
-      
+      // Draw Europe Change Text Indicator
+      svg.append("text").attr("id", "europeChange").text("Europe Change: " + europeChangeValue + " TWh").attr("x", w - 210).attr("y", h - 10).attr("fill","white");
+
       // Draw Color Gradient Scale
       svg.append("rect").attr("id", "colorScale").attr("x", 20).attr("y", h - 50).attr("width", 400).attr("height", 20);
       // Get Linear Color Gradient
@@ -120,10 +122,10 @@ function updateChoropleth(newYear) {
   d3.csv("./datasets/hydro-electricity-per-capita.csv",function(data){
     // Generate Hue Scheme Based On Data
     let color = d3.scaleLinear()
-    .domain([d3.min(data, (d) => { if (d.year == newYear && d.code != "" && d.code != "ERP") return parseFloat(d.renewables); }),d3.max(data, (d) => { if (d.year == newYear && d.code != "" && d.code != "ERP") return parseFloat(d.renewables/4); }),d3.max(data, (d) => { if (d.year == newYear && d.code != "" && d.code != "ERP") return parseFloat(d.renewables/3); }),d3.max(data, (d) => { if (d.year == newYear && d.code != "" && d.code != "ERP") return parseFloat(d.renewables/2); }),  d3.max(data, (d) => { if (d.year == newYear && d.code != "" && d.code != "ERP") return parseFloat(d.renewables); })])
+    .domain([d3.min(data, (d) => { if (d.year == newYear && d.code != "" && d.code != "ERP") return parseFloat(d.hydropowergeneration); }),d3.max(data, (d) => { if (d.year == newYear && d.code != "" && d.code != "ERP") return parseFloat(d.hydropowergeneration/4); }),d3.max(data, (d) => { if (d.year == newYear && d.code != "" && d.code != "ERP") return parseFloat(d.hydropowergeneration/3); }),d3.max(data, (d) => { if (d.year == newYear && d.code != "" && d.code != "ERP") return parseFloat(d.hydropowergeneration/2); }),  d3.max(data, (d) => { if (d.year == newYear && d.code != "" && d.code != "ERP") return parseFloat(d.hydropowergeneration); })])
     .range([ "#eff3ff","#bdd7e7","#6baed6","#3182bd","#08519c"]);
 
-    let globalChangeValue = 0; // Europe Aggregate Change in TWh
+    let europeChangeValue = 0; // Europe Aggregate Change in TWh
 
     // Bind Data From CSV To GeoJSON Properties
     d3.json("https://raw.githubusercontent.com/leakyMirror/map-of-europe/master/GeoJSON/europe.geojson",function(err,json) {
@@ -131,8 +133,8 @@ function updateChoropleth(newYear) {
         if (datum.year == newYear)
           for (let i = 0; i < json.features.length; i++) {
             let properties = json.features[i].properties;
-            if (properties.NAME == datum.entity) { properties.value = datum.renewables; break; }
-            else if (datum.entity == "World") { globalChangeValue = datum.renewables; break; }
+            if (properties.NAME == datum.entity) { properties.value = datum.hydropowergeneration; break; }
+            else if (datum.entity == "Europe") { europeChangeValue = datum.hydropowergeneration; break; }
           }
       });
 
@@ -144,7 +146,8 @@ function updateChoropleth(newYear) {
         else return "No Data\nCountry: " + d.properties.NAME + "\nYear: " + newYear;
       });
 
-
+      // Update Europe Change Text
+      svg.select("#europeChange").text("Europe Change: " + europeChangeValue + " TWh").attr("fill","white");
 
       // Update Color Scale Text
       d3.select("#minMarker").text(Math.ceil(color.domain()[0]));
