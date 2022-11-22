@@ -82,9 +82,7 @@ function click(d) {
 }
 
 
-      // Draw Global Change Text Indicator
-      svg.append("text").attr("id", "globalChange").text("Global Change: " + globalChangeValue + " TWh").attr("x", w - 210).attr("y", h - 10).attr("fill","white");
-
+      
       // Draw Color Gradient Scale
       svg.append("rect").attr("id", "colorScale").attr("x", 20).attr("y", h - 50).attr("width", 400).attr("height", 20);
       // Get Linear Color Gradient
