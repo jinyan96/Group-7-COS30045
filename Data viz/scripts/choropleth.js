@@ -146,8 +146,7 @@ function updateChoropleth(newYear) {
         else return "No Data\nCountry: " + d.properties.NAME + "\nYear: " + newYear;
       });
 
-      // Update Global Change Text
-      svg.select("#globalChange").text("Global Change: " + globalChangeValue + " TWh").attr("fill","white");
+
 
       // Update Color Scale Text
       d3.select("#minMarker").text(Math.ceil(color.domain()[0]));
