@@ -518,11 +518,11 @@ d3.csv("./datasets/Installed_Capacity_Pumping_Capacity_by_Country.csv", function
                 return arc(d, i)
             })
             .on("mouseover", function (event, d) {
-                d3.select(this)
+                d3.select(this._current)
                     .attr("opacity", 0.7)
             })
             .on("mouseout", function (event, d) {
-                d3.select(this)
+                d3.select(this._current)
                     .attr("opacity", 1)
             })
             .append("title")
